@@ -7,8 +7,8 @@ export interface LoginTestData {
 
 export const validUser: LoginTestData = {
     description: 'valid credentials',
-    username: 'standard_user',
-    password: 'secret_sauce',
+    username: process.env.VALID_USERNAME ?? (() => { throw new Error('VALID_USERNAME is not set in env/.env'); })(),
+    password: process.env.VALID_PASSWORD ?? (() => { throw new Error('VALID_PASSWORD is not set in env/.env'); })(),
 };
 
 export const invalidLoginCases: LoginTestData[] = [
